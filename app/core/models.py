@@ -8,6 +8,7 @@ from django.contrib.auth.models import (
     PermissionsMixin,
 )
 
+
 class UserManager(BaseUserManager):
     """Manager for users"""
 
@@ -36,7 +37,7 @@ class UserManager(BaseUserManager):
 # PermissionsMixin functionality for permissions feature
 class User(AbstractBaseUser, PermissionsMixin):
     """User in the system"""
-    #email us for authentication so should be unique
+    # email us for authentication so should be unique
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)

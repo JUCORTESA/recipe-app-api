@@ -4,7 +4,8 @@ Test for models
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 
-#get_user_model will chueck for user model or a custom one
+
+# get_user_model will check for user model or a custom one
 class ModelTest(TestCase):
     """Test models"""
 
@@ -23,7 +24,8 @@ class ModelTest(TestCase):
     def test_new_user_email_normalized(self):
         """TEst email is normalized for new users"""
         # According to standard RFC 5321 & 1035 cap are different users
-        # Usually emails threat all equally but as is an standard is better to allow it
+        # Usually emails threat all equally
+        # but as is an standard is better to allow it
         sample_emails = [
             ['test1@EXAMPLE.com', 'test1@example.com'],
             ['Test2@Example.com', 'Test2@example.com'],
@@ -38,7 +40,6 @@ class ModelTest(TestCase):
         """Test that creating a user without an email raises a ValueError"""
         with self.assertRaises(ValueError):
             get_user_model().objects.create_user('', 'test123')
-
 
     def test_create_superuser(self):
         """Test creating a superuser"""

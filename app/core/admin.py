@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 from core import models
 
+
 class UserAdmin(BaseUserAdmin):
     """Define the admin pages for users"""
     ordering = ['id']
@@ -23,12 +24,13 @@ class UserAdmin(BaseUserAdmin):
                 )
             }
         ),
-        (_('Important dates'), {'fields': ('last_login',)}), # careful fields value is a tuple
+        (_('Important dates'), {'fields': ('last_login',)}),
+        # careful fields value is a tuple
     )
     readonly_fields = ['last_login']
     add_fieldsets = (
         (None, {
-            'classes': ('wide',), # css classes from django
+            'classes': ('wide',),  # css classes from django
             'fields': {
                 'email',
                 'password1',
@@ -41,4 +43,6 @@ class UserAdmin(BaseUserAdmin):
         }),
     )
 # if not pass UserAdmin will get the default UserAdmin
+
+
 admin.site.register(models.User, UserAdmin)
